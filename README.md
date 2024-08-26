@@ -11,7 +11,7 @@
 1.  Clone this repository.
 
     ```bash
-        $   git clone https://github.com/ericnicdao069/backend-dev-exam.git
+        $   git clone https://github.com/jantoy052003/PRAXXYS-QA-Exam.git
     ```
 
 2.  Recreate environment variable file.
@@ -38,9 +38,9 @@
         $   DB_CONNECTION=mysql
         $   DB_HOST=127.0.0.1
         $   DB_PORT=3306
-        $   DB_DATABASE=laravel
+        $   DB_DATABASE=QA_Exam_dusk
         $   DB_USERNAME=root
-        $   DB_PASSWORD=
+        $   DB_PASSWORD=root
     ```
 
 6.  Execute Database Migration and Seeders.
