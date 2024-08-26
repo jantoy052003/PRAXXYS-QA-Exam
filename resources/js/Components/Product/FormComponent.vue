@@ -19,9 +19,9 @@
                 </div>
                 <div class="card-footer">
                     <div class="row" :class="{ 'justify-content-end': isPageOne, 'justify-content-between': !isPageOne }">
-                        <a v-if="step != 1" class="btn btn-light" @click="back">Back</a>
-                        <a v-if="step != 3" class="btn btn-dark" @click="next">Next</a>
-                        <a v-if="step == 3" class="btn btn-dark" @click="submit">Submit</a>
+                        <a dusk="back-btn" v-if="step != 1" class="btn btn-light" @click="back">Back</a>
+                        <a dusk="next-btn" v-if="step != 3" class="btn btn-dark" @click="next">Next</a>
+                        <a dusk="submit-btn" v-if="step == 3" class="btn btn-dark" @click="submit">Submit</a>
                     </div>
                 </div>
             </div>

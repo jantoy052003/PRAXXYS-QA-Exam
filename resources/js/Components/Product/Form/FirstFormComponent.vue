@@ -10,7 +10,7 @@
         <div class="row flex-column flex-md-row py-1">
             <div class="col col-md-3">Category</div>
             <div class="col">
-                <select class="form-control" v-model="form.category">
+                <select dusk="select-category" class="form-control" v-model="form.category">
                     <option value="0">Select a Category</option>
                     <option v-for="(category, key) in categoryEnum" :key="key" :value="key">
                         {{ category }}

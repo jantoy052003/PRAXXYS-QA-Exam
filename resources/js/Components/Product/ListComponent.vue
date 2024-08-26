@@ -5,12 +5,12 @@
                 <div class="card-header">
                     <div class="row flex-column flex-md-row">
                         <input v-model="keyword" @keypress.enter="search" class="form-control col-12 col-md-6" type="text" placeholder="Search Product..." />
-                        <select v-model="category" class="form-control col-12 col-md-3 mx-md-1 my-1 my-md-0">
+                        <select dusk="select-category" v-model="category" class="form-control col-12 col-md-3 mx-md-1 my-1 my-md-0">
                             <option value>Select Category</option>
                             <option v-for="(category, key) in categories" :key="key" :value="key">{{ category }}</option>
                         </select>
                         <div class="text-right text-md-left">
-                            <a class="btn btn-secondary btn-circle" @click="search">
+                            <a dusk="search-btn" class="btn btn-secondary btn-circle" @click="search">
                                 <i class="fas fa-search"></i>
                             </a>
                         </div>
@@ -31,7 +31,7 @@
                                 <td>{{ product.description }}</td>
                                 <td class="col-1">
                                     <div class="row justify-content-between">
-                                        <a :href="editUrl(product)" class="btn btn-dark my-1">
+                                        <a dusk="edit-btn" :href="editUrl(product)" class="btn btn-dark my-1">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a class="btn btn-danger my-1" @click.prevent="deleteProduct(product)">

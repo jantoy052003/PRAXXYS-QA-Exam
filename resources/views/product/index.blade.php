@@ -14,7 +14,7 @@
                 <h1 class="m-0 text-dark">Products</h1>
             </div>
             <div class="col-6">
-                <a href="{{ route('product.form') }}" class="btn btn-primary btn-round float-right">Create</a>
+                <a dusk="create-btn" href="{{ route('product.form') }}" class="btn btn-primary btn-round float-right">Create</a>
             </div>
         </div>
     </div>
