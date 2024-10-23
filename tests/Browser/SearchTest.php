@@ -13,7 +13,7 @@ class SearchTest extends DuskTestCase
      {
          $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                    ->typeSlowly('email', 'mayert.scot@example.com')
+                    ->typeSlowly('email', 'mohr.marietta@example.com')
                     ->typeSlowly('password', 'password')
                     ->click('button[type="submit"]')
                     ->assertSee('Products');
@@ -25,10 +25,10 @@ class SearchTest extends DuskTestCase
      {
          $this->browse(function (Browser $browser) {
             $browser->visit('/product')
-                    ->type('input[type="text"]', 'tempora')
+                    ->type('input[type="text"]', 'nesciunt')
                     ->click('@search-btn')
                     ->pause(1000)
-                    ->assertSee('Beauty & Personal Care');
+                    ->assertSee('Clothing');
          });
      }
 
@@ -37,7 +37,7 @@ class SearchTest extends DuskTestCase
      {
          $this->browse(function (Browser $browser) {
             $browser->visit('/product')
-                    ->type('input[type="text"]', 'cum')
+                    ->type('input[type="text"]', 'corporis')
                     //->click('select')
                     ->select('@select-category', '3')
                     ->click('select')

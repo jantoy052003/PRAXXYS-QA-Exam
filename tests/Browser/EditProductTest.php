@@ -7,7 +7,7 @@ use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 use Facebook\WebDriver\WebDriverBy;
 
-class CreateProductTest extends DuskTestCase
+class EditProductTest extends DuskTestCase
 {
     
     /** @test */
@@ -23,56 +23,49 @@ class CreateProductTest extends DuskTestCase
     }
 
     /** @test */
-    public function a_user_can_click_the_create_button_successfully(): void
+    public function a_user_can_edit_product_successfully(): void
     {
         $this->browse(function (Browser $browser) {
            $browser->visit('/product')
-                   ->click('@create-btn')
-                   ->assertSee('Product Create');
-        });
-    }
-    
-
-    //use DatabaseMigrations; 
-
-    /** @test */
-    public function a_user_can_create_product_successfully(): void
-    {
-        $this->browse(function (Browser $browser) {
-           $browser->visit('/product/form')
-                    ->type('input[type="text"]', 'Test Product3')
-                    ->select('@select-category', '2')
+                    ->pause(2000)
+                    ->scrollIntoView('.pagination')
+                    ->click('#app > div > div > div > div.card-footer > nav > ul > li:nth-child(6) > a')
+                    ->waitForLocation('/product')
+                    ->click('tbody tr:last-child td:last-child .btn')
+                    ->pause(2000)
+                    ->waitForText('Product Update')
+                    ->type('input[type="text"]', 'This is edited')
+                    ->select('@select-category', '3')
                     ->within(".ck-editor__main", function (Browser $browser){
-                        $browser->type(".ck-editor__editable", "Test product3");
+                        $browser->type(".ck-editor__editable", "Edit test");
                     })
                     ->pause(2000)
                     ->click("@next-btn")
                     ->pause(2000)
                     ->assertSee('Step 2 / 3')
-                    //->click("@plus-btn") i still can't figure out how to automate selecting from file picker :(
                     ->attach('file-upload', public_path('/assets/images/test-img.jpg'))
                     ->pause(2000)
                     ->click("@next-btn")
                     ->assertSee('Step 3 / 3')
                     ->click('.dp__pointer')
                     ->pause(1000)
-                    
+
                     //Select date inside date picker
                     ->within('.dp__menu_inner', function (Browser $browser){      
                         $browser->click('button[aria-label="Open months overlay"]')                                
                                 ->pause(3000)
                                 ->within('.dp__overlay_container', function (Browser $overlay) {
-                                    $overlay->click('.dp__overlay_row:nth-child(4) .dp__overlay_col:nth-child(3)'); //this selects September
+                                    $overlay->click('.dp__overlay_row:nth-child(4) .dp__overlay_col:nth-child(2)'); //this selects August
                                 })
                                 ->pause(2000)
                                 ->click('button[aria-label="Open years overlay"]')
                                 ->pause(2000)
                                 ->within('.dp__overlay_container', function (Browser $overlay) {
-                                    $overlay->click('.dp__overlay_row:nth-child(43) .dp__overlay_col:nth-child(3)'); //this selects 2025
+                                    $overlay->click('.dp__overlay_row:nth-child(43) .dp__overlay_col:nth-child(2)'); //this selects 2024
                                 })
                                 ->pause(2000)
                                 ->within('.dp__calendar[aria-label="Calendar days"]', function (Browser $browser) {
-                                    $browser->click('.dp__calendar_row:nth-child(4) .dp__calendar_item:nth-child(4)'); //this selects 25 in Sep
+                                    $browser->click('.dp__calendar_row:nth-child(4) .dp__calendar_item:nth-child(4)'); //this selects 22 in August
                                 })
                                 ->pause(2000);    
                     })
@@ -83,14 +76,7 @@ class CreateProductTest extends DuskTestCase
                     ->pause(3000)
                     ->click('@submit-btn')
                     ->pause(2000)
-                    // ->attach('input[type="file"]', base_path('downloads/test-img.jpg'))
-                    // ->pause(2000)
-                    // ->press('Open')
-                    // ->pause(2000)
-                    ->assertSee('Successfully Saved!');
-                    // ->click("@next-btn")
-                    // ->pause(2000)
-                    // ->assertSee('Step 3 / 3');
+                    ->assertSee('Successfully Updated!');
         });
     }
 }

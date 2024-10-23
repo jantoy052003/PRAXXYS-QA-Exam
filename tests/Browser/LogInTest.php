@@ -13,7 +13,7 @@ class LogInTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                    ->typeSlowly('email', 'mayert.scot@example.com')
+                    ->typeSlowly('email', 'mohr.marietta@example.com')
                     ->typeSlowly('password', 'password')
                     ->click('button[type="submit"]')
                     ->assertSee('Products');
